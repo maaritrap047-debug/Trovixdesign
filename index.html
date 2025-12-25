@@ -1,0 +1,223 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Sparkles, 
+  TrendingUp, 
+  BarChart3, 
+  Zap, 
+  ChevronRight, 
+  Play, 
+  ShieldCheck, 
+  Globe,
+  MessageSquare,
+  ArrowRight,
+  Instagram,
+  Twitter,
+  Linkedin
+} from 'lucide-react';
+
+const App = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const gallery = [
+    { title: "The AI Revolution", cat: "Tech", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=800" },
+    { title: "Investment Secrets", cat: "Finance", img: "https://images.unsplash.com/photo-1611974717535-7c857a48ecad?q=80&w=800" },
+    { title: "Productivity Hacks", cat: "Lifestyle", img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=800" },
+    { title: "Travel in 2025", cat: "Vlog", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800" },
+    { title: "Crypto Bull Run", cat: "Crypto", img: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?q=80&w=800" },
+    { title: "Building an Empire", cat: "Business", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=800" }
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#020617] text-slate-300 font-sans selection:bg-blue-500/30 selection:text-blue-200">
+      
+      {/* Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#020617]/80 backdrop-blur-xl border-b border-blue-500/10 py-4' : 'bg-transparent py-8'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <div className="w-10 h-10 bg-gradient-to-tr from-blue-700 to-blue-400 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:rotate-6 transition-transform">
+              <Sparkles className="text-white w-6 h-6" />
+            </div>
+            <span className="text-2xl font-black tracking-tight text-white uppercase italic">
+              Trovix<span className="text-blue-500">Design</span>
+            </span>
+          </div>
+
+          <div className="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
+            <a href="#work" className="hover:text-blue-400 transition-colors">Portfolio</a>
+            <a href="#process" className="hover:text-blue-400 transition-colors">Process</a>
+            <a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a>
+            <button className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2.5 rounded-lg transition-all shadow-lg shadow-blue-600/20">
+              Start Project
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative pt-44 pb-32 px-6">
+        {/* Animated Background Gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 overflow-hidden">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 blur-[120px] rounded-full animate-pulse"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-600/10 blur-[100px] rounded-full"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-black tracking-[0.2em] mb-10 uppercase">
+             Trusted by 100+ Pro Creators
+          </div>
+          
+          <h1 className="text-6xl md:text-8xl font-black text-white leading-[1.1] tracking-tighter mb-8 italic">
+            YOUR CHANNEL, <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600">REIMAGINED.</span>
+          </h1>
+
+          <p className="max-w-2xl mx-auto text-slate-400 text-lg md:text-xl mb-12 leading-relaxed">
+            Premium thumbnail design engineered to increase CTR and viewer retention. We turn casual browsers into loyal subscribers through elite visual storytelling.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button className="w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-black text-lg rounded-2xl transition-all hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2">
+              BROWSE WORK <ChevronRight size={20} />
+            </button>
+            <button className="w-full sm:w-auto px-10 py-5 bg-white/5 border border-white/10 text-white font-bold text-lg rounded-2xl transition-all hover:bg-white/10 backdrop-blur-sm">
+              OUR PRICING
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Bar */}
+      <div className="max-w-7xl mx-auto px-6 mb-32">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-8 bg-white/5 rounded-3xl border border-white/10 backdrop-blur-md">
+          {[
+            { label: "Total Views Generated", val: "500M+" },
+            { label: "Avg. CTR Increase", val: "14.2%" },
+            { label: "Designs Completed", val: "1,200+" },
+            { label: "Return Client Rate", val: "94%" }
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <div className="text-3xl font-black text-white mb-1">{stat.val}</div>
+              <div className="text-[10px] font-bold text-blue-400 uppercase tracking-widest">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Portfolio Grid */}
+      <section id="work" className="py-24 px-6 relative">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <h2 className="text-4xl md:text-5xl font-black text-white italic tracking-tighter">
+              FEATURED <br /> <span className="text-blue-500">PROJECTS</span>
+            </h2>
+            <div className="flex gap-4">
+              <div className="px-5 py-2 rounded-full bg-blue-600 text-white text-xs font-bold cursor-pointer">All Categories</div>
+              <div className="px-5 py-2 rounded-full bg-white/5 text-slate-500 text-xs font-bold hover:bg-white/10 transition-all cursor-pointer">High Performance</div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {gallery.map((item, idx) => (
+              <div key={idx} className="group relative rounded-[2rem] overflow-hidden bg-slate-900 border border-white/5 hover:border-blue-500/50 transition-all duration-500">
+                <div className="aspect-video overflow-hidden">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700 opacity-80 group-hover:opacity-100" />
+                </div>
+                <div className="p-8">
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="text-blue-400 text-[10px] font-black uppercase tracking-widest bg-blue-400/10 px-3 py-1 rounded-full">{item.cat}</span>
+                    <TrendingUp size={16} className="text-blue-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4">{item.title}</h3>
+                  <button className="text-xs font-black text-white flex items-center gap-2 group-hover:text-blue-400 transition-colors">
+                    CASE STUDY <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="process" className="py-32 px-6 bg-[#010410]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+          {[
+            { icon: <BarChart3 />, title: "Data-Driven Design", desc: "We analyze heatmaps and audience behavior to place elements where they attract the most attention." },
+            { icon: <ShieldCheck />, title: "Full Brand Security", desc: "All source files are included. We maintain your brand identity across every single upload." },
+            { icon: <Zap />, title: "Hyper-Speed Delivery", desc: "Standard 24-48 hour turnaround. We work at the speed of the algorithm." }
+          ].map((s, i) => (
+            <div key={i} className="p-10 rounded-3xl bg-gradient-to-b from-white/5 to-transparent border border-white/10 hover:border-blue-500/30 transition-all">
+              <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-8 shadow-lg shadow-blue-600/20">
+                {s.icon}
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">{s.title}</h3>
+              <p className="text-slate-400 leading-relaxed text-sm">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section id="contact" className="py-32 px-6">
+        <div className="max-w-5xl mx-auto rounded-[3rem] overflow-hidden relative border border-blue-500/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-950 to-black"></div>
+          <div className="relative z-10 p-12 md:p-24 text-center">
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-8 italic">Ready to go <span className="text-blue-400">Viral?</span></h2>
+            <p className="text-blue-100/60 text-lg mb-12 max-w-xl mx-auto">
+              Stop settling for average. Let TrovixDesign build your visual legacy today.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="px-12 py-5 bg-white text-blue-900 font-black rounded-2xl hover:bg-blue-50 transition-all flex items-center gap-3">
+                BOOK A CALL <MessageSquare size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-20 px-6 border-t border-white/5">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+          <div>
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <Sparkles className="text-white w-4 h-4" />
+              </div>
+              <span className="text-xl font-black text-white uppercase italic tracking-tighter">TrovixDesign</span>
+            </div>
+            <p className="text-slate-500 text-sm max-w-xs">Professional YouTube Visual Engineering & Brand Growth Studio.</p>
+          </div>
+
+          <div className="flex gap-8">
+            <div className="flex flex-col gap-4">
+              <span className="text-xs font-black text-white uppercase tracking-[0.2em] mb-2">Socials</span>
+              <div className="flex gap-4">
+                {[Instagram, Twitter, Linkedin].map((Icon, i) => (
+                  <a key={i} href="#" className="p-3 bg-white/5 rounded-xl border border-white/10 text-slate-400 hover:text-blue-400 transition-all">
+                    <Icon size={18} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 flex justify-between text-[10px] font-bold text-slate-600 uppercase tracking-widest">
+          <span>© 2025 TrovixDesign Studio</span>
+          <span className="flex gap-6">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </span>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default App;
